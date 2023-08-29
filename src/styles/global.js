@@ -70,5 +70,71 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     gap: 8px;
   }
+  // Content Tasks
+  .task-content{
+    width: 100%;
+    margin-top: 64px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 26px;
+    .task-content-top{
+      width: 100%;
+      max-width: 736px;
+      display: flex;
+      justify-content: space-between;
+      .task-created{
+        p{
+          color: var(--blue);
+          font-family: 'Inter';
+          font-size: 14px;
+          font-weight: 700;
+          span{
+            display: inline-block;
+            color: var(--gray-200);
+            font-family: 'Inter';
+            font-size: 12px;
+            font-weight: 700;
+            background: var(--gray-500);
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            border-radius: 999px;
+            margin-left: 8px;
+          }
+        }
+      }
+      .task-done{
+        p{
+          color: var(--purple);
+          font-family: 'Inter';
+          font-size: 14px;
+          font-weight: 700;
+          span{
+            display: inline-block;
+            color: var(--gray-200);
+            font-family: 'Inter';
+            font-size: 12px;
+            font-weight: 700;
+            background: var(--gray-500);
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            border-radius: 999px;
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+    .task-content-bottom{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `;
 export default GlobalStyle;

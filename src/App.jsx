@@ -4,6 +4,7 @@ import GlobalStyle from "./styles/global";
 import { Input } from './components/Input';
 import { Plus } from 'phosphor-react';
 import { ButtonSubmit } from './components/ButtonSubmit';
+import { Task } from './components/Task';
 
 // Tasks Array
 const tasks = [
@@ -45,7 +46,19 @@ function App() {
           />
         </form>
       </div>
-      
+      <div className="task-content">
+        <div className="task-content-top">
+          <div className="task-created">
+            <p>Tasks created: <span>5</span></p>
+          </div>
+          <div className="task-done">
+            <p>Done <span>2 of 5</span></p>
+          </div>
+        </div>
+        <div className='task-content-bottom'>
+          <Task/>
+        </div>
+      </div>
     </>
   )
 }
