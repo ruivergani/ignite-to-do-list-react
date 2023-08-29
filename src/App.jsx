@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import GlobalStyle from "./styles/global";
 import { Input } from './components/Input';
 import { Plus } from 'phosphor-react';
+import { ButtonSubmit } from './components/ButtonSubmit';
 
 // Tasks Array
 const tasks = [
@@ -32,17 +33,18 @@ function App() {
     <>
       <GlobalStyle/>
       <Header/>
-      <form action="" onSubmit={handleSubmit}>
-        <Input
-          typeInput="text"
-          valueInput="Add new task"
-          
-        />
-        <button type='submit'>
-          Create
-          <Plus size={44} weight="bold" />
-        </button>
-      </form>
+      <div className="task-form">
+        <form action="" onSubmit={handleSubmit}>
+          <Input
+            typeInput="text"
+            valueInput="Add new task"
+            required
+          />
+          <ButtonSubmit
+
+          />
+        </form>
+      </div>
       
     </>
   )

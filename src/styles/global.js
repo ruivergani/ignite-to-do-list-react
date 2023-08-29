@@ -57,5 +57,18 @@ const GlobalStyle = createGlobalStyle`
       padding: 0px 1.5rem;
     }
   }
+  // Form CSS
+  .task-form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -30px;
+  }
+  form{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 `;
 export default GlobalStyle;
