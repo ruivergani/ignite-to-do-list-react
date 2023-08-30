@@ -2,10 +2,10 @@
 import { Trash } from 'phosphor-react';
 import { StyleButtonTrash, StyleInputCheckbox, StyleParagraph, StyleTask, StyleTaskDiv } from './styles';
 
-export function Task({content, checked}){
+export function Task({id, content, checked, onDeleteTask}){
   // Functions
   function handleDeleteTask(){
-    console.log('delete')
+    onDeleteTask(id);
   }
   return(
     <StyleTask>

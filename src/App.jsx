@@ -38,6 +38,14 @@ function App() {
     event.target.setCustomValidity(''); // set default input error (clean error validity message)
     setNewTaskText(event.target.value) // nao precisa do name mais (pode ser direto)
   }
+  function deleteTask(taskToDeleteId){
+    // Imutabilidade => 
+    // Procurar no array tasks uma task com mesmo ID da que foi passado como parametro
+    const tasksWithoutDeletedOne = tasks.filter(task => { // filter => true (stays) - false (leave)
+      return task.id !== taskToDeleteId; // retorna todas as tasks que for diferente da task para deletar
+    });
+    setTask(tasksWithoutDeletedOne);
+  }
   return (
     <>
       <GlobalStyle/>
@@ -82,8 +90,10 @@ function App() {
               return (
                 <Task
                   key={item.id} // identifier key
+                  id={item.id} // identifier id
                   content={item.title}
                   checked={item.isComplete}
+                  onDeleteTask={deleteTask} // use function as props
                 />
               )
             })
