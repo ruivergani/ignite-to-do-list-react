@@ -1,17 +1,24 @@
+/* eslint-disable react/prop-types */
 import { Trash } from 'phosphor-react';
 import { StyleButtonTrash, StyleInputCheckbox, StyleParagraph, StyleTask, StyleTaskDiv } from './styles';
 
-export function Task({content}){
+export function Task({content, checked}){
+  // Functions
+  function handleDeleteTask(){
+    console.log('delete')
+  }
   return(
     <StyleTask>
       <StyleTaskDiv>
         <StyleInputCheckbox
           type="checkbox"
-          value="true"
+          value={checked}
         />
-        <StyleParagraph>{content}</StyleParagraph>
+        <StyleParagraph className={checked ? 'line' : ''}>
+          {content}
+        </StyleParagraph>
       </StyleTaskDiv>
-      <StyleButtonTrash title='Delete Comment'>
+      <StyleButtonTrash title='Delete Comment' onClick={handleDeleteTask}>
         <Trash size={20}></Trash>
       </StyleButtonTrash>
     </StyleTask>

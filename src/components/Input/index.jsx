@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import {StyleInput} from './styles';
 // Component Input
-export function Input({typeInput, valueInput, setInputValue,}){
+export function Input({nameInput,typeInput, valueInput, placeholderInput, onChangeInput}){
   return(
     <StyleInput
       type={typeInput}
+      name={nameInput}
       value={valueInput}
-      onChange={(event) => setInputValue(event.target.value)}
+      placeholder={placeholderInput}
+      onChange={onChangeInput}
     >
     </StyleInput>
   )

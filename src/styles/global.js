@@ -134,6 +134,26 @@ const GlobalStyle = createGlobalStyle`
       gap: 12px;
       align-items: center;
       justify-content: center;
+      .empty-task{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        border-top: 1px solid var(--grey-400, #333);
+        padding-top: 4rem;
+        width: 100%;
+        min-width: 736px;
+        h3{
+          color: var(--gray-300);
+          text-align: center;
+          font-family: 'Inter';
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 140%; /* 22.4px */
+        }
+        
+      }
     }
   }
 `;

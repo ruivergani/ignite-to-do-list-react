@@ -66,6 +66,10 @@ export const StyleParagraph = styled.p`
   font-weight: 400;
   line-height: 140%; /* 19.6px */
   max-width: 630px;
+  &.line{
+    text-decoration: line-through;
+    color: var(--gray-300);
+  }
 `;
 
 // Button 
