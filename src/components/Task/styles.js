@@ -3,8 +3,11 @@ import styled from "styled-components";
 // Task Component
 export const StyleTask = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
+  width: 100%;
+  min-width:736px;
   border-radius: 8px;
   border: 1px solid var(--gray-400);
   background: var(--gray-500);
@@ -12,6 +15,11 @@ export const StyleTask = styled.div`
   width: 100%;
   max-width: 736px;
   padding: 16px;
+`;
+export const StyleTaskDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
 export const StyleInputCheckbox = styled.input`
   /* Hide the default checkbox appearance */
@@ -21,7 +29,6 @@ export const StyleInputCheckbox = styled.input`
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  margin-top: 3px;
   display: flex;
   width: 20px;
   height: 20px;
@@ -55,9 +62,10 @@ export const StyleInputCheckbox = styled.input`
 export const StyleParagraph = styled.p`
   color: var(--gray-100);
   font-family: 'Inter';
-  font-size: 14px;
+  font-size:15px;
   font-weight: 400;
   line-height: 140%; /* 19.6px */
+  max-width: 630px;
 `;
 
 // Button 
@@ -67,7 +75,6 @@ export const StyleButtonTrash = styled.button`
   transition: all .2s;
   cursor: pointer;
   font-size: 14px;
-  margin-top: 3px;
   &:hover{
     color: var(--danger);
   }

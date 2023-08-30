@@ -26,9 +26,8 @@ const tasks = [
 ]
 
 function App() {
-
+  // Functions
   function handleSubmit(){
-
   }
   return (
     <>
@@ -41,9 +40,7 @@ function App() {
             valueInput="Add new task"
             required
           />
-          <ButtonSubmit
-
-          />
+          <ButtonSubmit/>
         </form>
       </div>
       <div className="task-content">
@@ -56,7 +53,17 @@ function App() {
           </div>
         </div>
         <div className='task-content-bottom'>
-          <Task/>
+          {
+            // map the array tasks
+            tasks.map(task => {
+              return (
+                <Task
+                  key={task.id} // identifier key
+                  content={task.title}
+                />
+              )
+            })
+          }
         </div>
       </div>
     </>
@@ -64,3 +71,6 @@ function App() {
 }
 
 export default App;
+
+// Default Export = usa a palavra default e pode ser renomeado o componente na importacao
+// Named Exports = nao usa a palavra default e nao pode ser renomeado o componente

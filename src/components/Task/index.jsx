@@ -1,14 +1,16 @@
 import { Trash } from 'phosphor-react';
-import { StyleButtonTrash, StyleInputCheckbox, StyleParagraph, StyleTask } from './styles';
+import { StyleButtonTrash, StyleInputCheckbox, StyleParagraph, StyleTask, StyleTaskDiv } from './styles';
 
-export function Task(){
+export function Task({content}){
   return(
     <StyleTask>
-      <StyleInputCheckbox
-        type="checkbox"
-        value="true"
-      />
-      <StyleParagraph>Lorem ipsum dolor sit amet consectetur adipisicing elit.ipsum dolor sit amet consectetur adipisicing elit.</StyleParagraph>
+      <StyleTaskDiv>
+        <StyleInputCheckbox
+          type="checkbox"
+          value="true"
+        />
+        <StyleParagraph>{content}</StyleParagraph>
+      </StyleTaskDiv>
       <StyleButtonTrash title='Delete Comment'>
         <Trash size={20}></Trash>
       </StyleButtonTrash>
