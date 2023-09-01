@@ -26,6 +26,7 @@ function App() {
   // State
   const [tasks, setTask] = useState([])
   const [newTaskText, setNewTaskText] = useState('')
+  const [newIsComplete, setNewIsComplete] = useState(false)
 
   // Functions
   function handleCreateNewTask(event){
@@ -34,7 +35,7 @@ function App() {
     setTask([...tasks, {id: uuidv4(), title: newTaskText, isComplete: false}]);
     setNewTaskText(''); // clear text input
   } 
-  function handleNewTaskChange(event){
+  function handleNewTaskChecked(event){
     event.target.setCustomValidity(''); // set default input error (clean error validity message)
     setNewTaskText(event.target.value) // nao precisa do name mais (pode ser direto)
   }
@@ -46,6 +47,22 @@ function App() {
     });
     setTask(tasksWithoutDeletedOne);
   }
+  function changeTask(taskToChangeId){
+    // Procurar no array tasks com mesmo ID que foi passado como parametro
+    const newTasks = tasks.map(item => {
+      if(item.id === taskToChangeId){
+        setNewIsComplete(item.isComplete = !newIsComplete);  // Inverte o valor atual do estado newIsComplete
+        //console.log(`Tarefa com ID ${item.id} foi alterada para isComplete=${item.isComplete}`);
+      }
+      return item; // retorna um novo array de tasks
+    });
+    setTask(newTasks); // Atualiza o estado tasks com o novo array de tarefas
+
+    /* 
+      Importante o conceito de imutabilidade, nao alterar array mas sim criar um novo
+      Tambem e importante pensar que se o isComplete nao for um estado, quando alterar seu valor o componente nao vai renderizar de novo => logo nao e possivel riscar a linha <p> com uma classe ('line')
+    */
+  }
   return (
     <>
       <GlobalStyle/>
@@ -55,7 +72,7 @@ function App() {
           <Input
             nameInput='taskInputText'
             typeInput='text'
-            onChangeInput={handleNewTaskChange}
+            onChangeInput={handleNewTaskChecked}
             placeholderInput="Add new task"
             valueInput={newTaskText} // valor do text input (assim consegue deixar vazio apos criar nova task)
             required
@@ -76,9 +93,22 @@ function App() {
           </div>
           <div className="task-done">
             <p>Done
-              <span>
-                2 of 5
-              </span>
+              {
+                tasks.length > 0 ? (
+                <span>
+                  {
+                    // Reducer
+                  }
+                  2 
+                  of &nbsp; 
+                  {
+                    tasks.length
+                  }
+                </span>
+              ) : (
+                <span>{tasks.length}</span>
+              )
+              }
             </p>
           </div>
         </div>
@@ -93,7 +123,8 @@ function App() {
                   id={item.id} // identifier id
                   content={item.title}
                   checked={item.isComplete}
-                  onDeleteTask={deleteTask} // use function as props
+                  onDeleteTask={deleteTask} // use function as props to delete task
+                  onChangeTask={changeTask} // use function as props to change the isComplete from the task
                 />
               )
             })
