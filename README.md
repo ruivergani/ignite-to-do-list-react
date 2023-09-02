@@ -80,7 +80,7 @@ ___
 ```bash
 
 # Navigate to the directory
-$ cd ignite-feed-ts
+$ cd ignite-to-do-list-react
 
 # Install the necessary dependencies
 $ yarn
