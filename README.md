@@ -52,7 +52,6 @@ The following technologies were employed in the creation of this project:
 - [TypeScript](https://www.typescriptlang.org/)
 - [Styled Components](https://styled-components.com/)
 - [Phosphor React](https://phosphoricons.com/)
-- [Date-fns](https://date-fns.org/)
 - [Visual Studio Code](https://code.visualstudio.com/) with [editorConfig][vceditconfig] and [esLint][vceslint]
 - [Figma](https://www.figma.com/file/QngNpEvtTk7XN61PObI3Ro/Ignite-Feed?type=design&node-id=26%3A12&mode=design&t=GL7dPs6g1RYCtsB6-1) detailed Figma file for the project;
 
