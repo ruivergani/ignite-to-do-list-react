@@ -32,7 +32,7 @@ function App() {
   function handleCreateNewTask(event){
     event.preventDefault(); // prevent form going to another with data
     //console.log(event.target.taskInputText.value) // get the value from the input
-    setTask([...tasks, {id: uuidv4(), title: newTaskText, isComplete: false}]);
+    setTask([...tasks, {id: uuidv4(), title: newTaskText, isComplete: newIsComplete}]);
     setNewTaskText(''); // clear text input
   } 
   function handleNewTaskChecked(event){
@@ -51,18 +51,29 @@ function App() {
     // Procurar no array tasks com mesmo ID que foi passado como parametro
     const newTasks = tasks.map(item => {
       if(item.id === taskToChangeId){
-        setNewIsComplete(item.isComplete = !newIsComplete);  // Inverte o valor atual do estado newIsComplete
-        //console.log(`Tarefa com ID ${item.id} foi alterada para isComplete=${item.isComplete}`);
+        item.isComplete = !item.isComplete; // Inverte o valor atual de isComplete
+        setNewIsComplete(!item.isComplete); // Atualiza o estado newIsComplete com base na tarefa atual
+        console.log(`Tarefa com ID ${item.id} foi alterada para isComplete=${item.isComplete}`);
       }
+      setNewIsComplete(false); // set default isComplete = false
       return item; // retorna um novo array de tasks
     });
     setTask(newTasks); // Atualiza o estado tasks com o novo array de tarefas
-
-    /* 
-      Importante o conceito de imutabilidade, nao alterar array mas sim criar um novo
-      Tambem e importante pensar que se o isComplete nao for um estado, quando alterar seu valor o componente nao vai renderizar de novo => logo nao e possivel riscar a linha <p> com uma classe ('line')
-    */
   }
+
+  // Reduce and Total Tasks
+  const totalTasksCreated = tasks.length;
+  const totalTasksDone = tasks.reduce( // iterate over tasks object
+    // acc = accumulator (acumulates result as iteration happens)
+    // cur = current element proccesed 
+    // Number(cur.isComplete) converts the boolean isComplete property of the task to a number (0 for false and 1 for true).
+    (acc, cur) => acc + Number(cur.isComplete),
+    0, // valor inicial of accumulator
+  );
+  /* 
+  The reduce method effectively sums up the values of Number(cur.isComplete) for all tasks in the array, resulting in totalTasksDone being the total number of tasks marked as done (where isComplete is true).
+  */
+ 
   return (
     <>
       <GlobalStyle/>
@@ -94,19 +105,18 @@ function App() {
           <div className="task-done">
             <p>Done
               {
-                tasks.length > 0 ? (
+                totalTasksCreated > 0 ? (
                 <span>
                   {
-                    // Reducer
+                    totalTasksDone
                   }
-                  2 
-                  of &nbsp; 
+                  &nbsp; of &nbsp; 
                   {
-                    tasks.length
+                    totalTasksCreated
                   }
                 </span>
               ) : (
-                <span>{tasks.length}</span>
+                <span>{totalTasksCreated}</span>
               )
               }
             </p>
@@ -114,7 +124,7 @@ function App() {
         </div>
         <div className='task-content-bottom'>
           {
-            tasks.length > 0 ? (
+            totalTasksCreated > 0 ? (
             // map the array tasks
             tasks.map(item => {
               return (
