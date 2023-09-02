@@ -45,6 +45,7 @@ The following technologies were employed in the creation of this project:
 - Handling properties in components.
 - Componentization to make the code more modular and reusable.
 - Responsive to all devices and screen sizes;
+- Array manipulation methods such as map, filter, and even reduce. 
 - [Yarn](https://vitejs.dev/)
 - [Vite JS](https://vitejs.dev/)
 - [React JS](https://reactjs.org/)
